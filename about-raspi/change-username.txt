@@ -1,0 +1,35 @@
+How to change raspbian default uaername "pi" (if you are using Raspbian system)
+at least it works for me(Raspbian 10 , 2020 April 5th)
+(As I'm not a native english speaker, this post may be contains many languagge errors, I am sorry for this)
+
+1.You need to enable root, type following commands:
+	sudo passwd root (to create root password);
+	sudo passwd --unlock root (to unlock root);
+	su root (to confirm you successfully enable root).
+
+2.You close autologin (to prevent default user login when machine startup), do as following:
+	Type command "sudo raspi-config" to change raspbian system setting;
+	Goto "Boot Options";
+	Goto "Desktop / CLI";
+	Select "Console (requiring user to login)".
+
+3.Enable root login through SSH
+	sudo vim /ssh/sshd_config (to edit the file);
+	Add line "PermitRootLogin yes" to the file, you are recommend to add it below a line contain a word
+	"PermitRootLoginwithout" or something similar;
+	Save and exit the file, then reboot system.
+
+4.Login your device as root, and change username:
+	Login as root, then type command "who", you may see only a user "root";
+	If there are other login users, as I have not face with this problem after doing above steps, it's so sorry that I
+	can't give you some useful tips, please seek others help :(
+	Else, type following commands:
+	usermod -l your-user-name pi (modify the default user name);
+	groupmod -n your-user-name pi (modify the group);
+	mv /home/pi /home/your-user-name (move all files of the old username to the new one);
+	usermod -d /home/your-user-name your-user-name (to change the Home dir of new username in the file /etc/passwd);
+	Now you can reboot system, and login with your new user name, since the above do not contain anything about change
+	user password, you may use the password of the default "Pi" username (and I assume that you have already set the
+	password before you reading this post);
+	After login, when the first time you type a command, your are required to enter your user password, just type once
+	and the whole thing is done.Now you can enjoy the Pi with a username you preferred :)
