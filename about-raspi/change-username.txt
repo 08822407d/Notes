@@ -1,5 +1,6 @@
 How to change raspbian default uaername "pi" (if you are using Raspbian system)
-at least it works for me(Raspbian 10 , 2020 April 5th)
+At least it works for me(Raspbian 10 , 2020 April 5th), many people said that the recommanded way to change the default
+username is to create a new user, the way below is not a perfect one. To do or not to do, it's your choice.
 (As I'm not a native english speaker, this post may be contains many languagge errors, I am sorry for this)
 
 1.You need to enable root, type following commands:
