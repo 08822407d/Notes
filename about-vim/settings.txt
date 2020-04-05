@@ -1,0 +1,33 @@
+syntax on
+filetype indent on
+
+set number
+set relativenumber
+set nocompatible
+set showmode
+set showcmd
+set mouse=a
+set encoding=utf-8
+set t_Co=256
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set cursorline
+set textwidth=80
+set wrap
+set linebreak
+set scrolloff=5
+set sidescrolloff=15
+set laststatus=2
+set ruler
+set showmatch
+set incsearch
+set ignorecase
+
+# set undofile
+set autoread
+
+set wildmenu
+set wildmode=longest:list,full

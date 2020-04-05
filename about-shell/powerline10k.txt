@@ -19,4 +19,5 @@ Official site: https://github.com/romkatv/powerlevel10k.git
 		ZSH_THEME="powerlevel10k/powerlevel10k"
 	Configure
 		p10k configure
-
+	Update
+		For oh-my-zsh: git -C $ZSH_CUSTOM/themes/powerlevel10k pull
