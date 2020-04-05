@@ -1,0 +1,22 @@
+Official site: https://github.com/romkatv/powerlevel10k.git
+
+1.Installation
+	On oh-my-zsh
+		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+		git clone --depth=1 https://gitee.com/g11de/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+2.Fonts
+	Downdload all four file below
+		https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+		https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+		https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+		https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+	Or clone from this repo
+
+3.Use
+	Change theme to p10k
+		vim ~/.zshrc
+		ZSH_THEME="powerlevel10k/powerlevel10k"
+	Configure
+		p10k configure
+

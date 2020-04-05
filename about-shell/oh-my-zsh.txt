@@ -1,0 +1,39 @@
+Official site: https://ohmyz.sh/
+				https://github.com/ohmyzsh/ohmyzsh
+
+1.Installing oh-my-zsh
+	Via CURL
+		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	Via WGET
+		sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+2.Settings
+	Plugins
+		vim ~/.zshrc
+		plugins=(
+				  git
+				  sudo
+				  vi-mode
+				  history
+				  extract
+				  safe-paste
+				  colored-man-pages
+				  command-not-found
+				  zsh-autosuggestions
+				  zsh-syntax-highlighting
+				)
+
+3.Plugin installation
+	AutoSuggestion
+		git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+		git clone https://gitee.com/g11de/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+	SyntaxHighlight
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlightin
+		git clone https://gitee.com/g11de/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlightin
+
+
+4.Others
+	Manually update
+		upgrade_oh_my_zsh
+	Uninstall
+		uninstall_oh_my_zsh
