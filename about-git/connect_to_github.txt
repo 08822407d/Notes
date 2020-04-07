@@ -1,4 +1,22 @@
 1.Creat SSH key
-    ssh-keygen -t rsa -C "your-email-address" (then you are recommended just type ENTER several times by use default path and null password)
-    vim ~/.ssh/id_rsa.pub (copy the whole thing in the file)
-    Then add that to github's ssh keys(you can search on the internet)
+    ssh-keygen -t rsa -C "your-email-address" (then you are recommended just type ENTER several times by use default path and null password);
+    vim ~/.ssh/id_rsa.pub (copy the whole thing in the file);
+    Then add that to github's ssh keys(you can search on the internet);
+    ssh -T git@github.com (then type "yes", and you may see words about "successfully authenticated", that means you have connected to github);
+
+2.Connect local repo to github repo
+    Set local git email and username by typing:
+        git config --global user.email "you@example.com";
+        git config --global user.name "Your Name";
+        (I typed the email address the same as the one used to creat ssh-key in step1, I don't know what will happen if you use a different one)
+    Creat a new repo on github, then click "clone or download (Use SSH)", and type:
+        git remote add origin (and paste what you copy from the former step behind the command, the whole command may look like "git remote add origin git@github.com:your name/repository name.git");
+    Then type the following commands:
+        git pull origin master (git pull origin master --allow-unrelated-histories);
+        git add -A;
+        git commit -m "something about your commitment";
+        git push -u origin master;
+    Now the remote repo should looks like local one.
+
+3.Change HTTPS repo to SSH repo
+    If you copy github repo https link by accident, each time you push commitment, it requires you to enter email address and password.
