@@ -1,2 +1,5 @@
 # Mac files
 *.DS_Store
+
+#VSC files
+.vscode
