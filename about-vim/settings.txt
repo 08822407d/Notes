@@ -14,7 +14,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
-set cursorline
+" set cursorline
 set textwidth=80
 set wrap
 set linebreak
@@ -26,7 +26,7 @@ set showmatch
 set incsearch
 set ignorecase
 
-# set undofile
+" set undofile
 set autoread
 
 set wildmenu
