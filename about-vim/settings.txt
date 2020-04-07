@@ -14,7 +14,11 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
+<<<<<<< HEAD
 " set cursorline
+=======
+# set cursorline
+>>>>>>> bb922f42ae02c1dae80fa381be1b1e85ffff2666
 set textwidth=80
 set wrap
 set linebreak

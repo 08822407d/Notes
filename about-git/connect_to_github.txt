@@ -1,0 +1,4 @@
+1.Creat SSH key
+    ssh-keygen -t rsa -C "your-email-address" (then you are recommended just type ENTER several times by use default path and null password)
+    vim ~/.ssh/id_rsa.pub (copy the whole thing in the file)
+    Then add that to github's ssh keys(you can search on the internet)
