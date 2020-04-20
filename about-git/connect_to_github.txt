@@ -20,3 +20,12 @@
 
 3.Change HTTPS repo to SSH repo
     If you copy github repo https link by accident, each time you push commitment, it requires you to enter email address and password.
+    Type:
+        git remote -v;
+        It will show something like:
+            "origin  https://github.com/OWNER-NAME/REPO-NAME.github.io.git (fetch)"
+            "origin  https://github.com/OWNER-NAME/REPO-NAME.github.io.git (push)"
+        Note that the link in HTTPS form "https://",
+    Then Type:
+        git remote set-url origin git@github.com:OWNER-NAME/REPO-NAME.github.io.git;
+    Now type "git remote -v", you may see the link in SSH form "git@".
