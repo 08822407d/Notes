@@ -1,0 +1,33 @@
+1.Change Homebrew self source:
+    To change to USTC mirror, type:
+        cd "$(brew --repo)"
+        git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+    To restore to official  source, type:
+        cd "$(brew --repo)"
+        git remote set-url origin https://github.com/Homebrew/brew.git
+
+2.Change Homebrew Bottles source:
+    Make sure the PATH $HOMEBREW_BOTTLE_DOMAIN value be:
+        "https://mirrors.ustc.edu.cn/homebrew-bottles",
+    for Bash, type:
+        echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+        source ~/.bash_profile
+    for Zsh, type:
+        echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+        source ~/.zshrc
+
+3.Change Homebrew Core sourece:
+    To change to USTC mirror, type:
+        cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+        git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+    To restore to official  source, type:
+        cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+        git remote set-url origin https://github.com/Homebrew/homebrew-core
+
+4.Change Homebrew Cask source:
+    To change to USTC mirror, type:
+        cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+        git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+    To restore to official  source, type:
+        cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+        git remote set-url origin https://github.com/Homebrew/homebrew-cask
