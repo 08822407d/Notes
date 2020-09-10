@@ -15,7 +15,7 @@ set shiftwidth=4
 set expandtab
 set softtabstop=5
 " set cursorline
-set textwidth=80
+" set textwidth=80
 set wrap
 set linebreak
 set scrolloff=5
