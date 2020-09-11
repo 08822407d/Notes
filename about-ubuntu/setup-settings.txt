@@ -12,3 +12,19 @@
           sudo update-initramfs -u
      Then reboot system, and type as follow to confirm success:
           lsmod | grep nouveau
+
+     After Intalled NV driver and CUDA, add path to $PATH, add the following two lines to ~/.bashrc or ~/.zshrc:
+          export PATH=/usr/local/cuda/bin:$PATH
+          export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+3. Change GCC and G++ version
+     First type as follow to check which version you have isntalled:
+          ls /usr/bin/gcc*
+     Then add alternatives software version:
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 100
+     Then type as follow to choose the version you want:
+          sudo update-alternatives --config gcc
+          sudo update-alternatives --config g++
