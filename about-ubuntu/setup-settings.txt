@@ -1,3 +1,14 @@
 1. Change apt repo source to CN mirror
      sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
      sudo sed -i 's/cn.archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+
+2. Install NVIDIA driver
+     First BAN nouveau driver, type as follow to open blacklist file:
+          sudo vim /etc/modprobe.d/blacklist.conf
+     Append two lines:
+          blacklist nouveau
+          options nouveau modeset=0
+     Save and close, then type:
+          sudo update-initramfs -u
+     Then reboot system, and type as follow to confirm success:
+          lsmod | grep nouveau
