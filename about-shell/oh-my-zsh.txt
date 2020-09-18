@@ -6,6 +6,20 @@ Official site: https://ohmyz.sh/
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	Via WGET
 		sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+1.1 Manually install
+	1. Clone the repository:
+		git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+	2. Optionally, backup your existing ~/.zshrc file:
+		cp ~/.zshrc ~/.zshrc.orig
+	3. Create a new zsh configuration file
+	You can create a new zsh config file by copying the template that we have included for you.
+		cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+	4. Change your default shell
+		chsh -s $(which zsh)
+	You must log out from your user session and log back in to see this change.
+
+	5. Initialize your new zsh configuration
+	Once you open up a new terminal window, it should load zsh with Oh My Zsh's configuration.
 
 2.Settings
 	Plugins
