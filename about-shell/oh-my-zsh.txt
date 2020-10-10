@@ -26,7 +26,6 @@ Official site: https://ohmyz.sh/
 		vim ~/.zshrc
 		plugins=(
 				  git
-				  sudo
 				  vi-mode
 				  history
 				  extract
