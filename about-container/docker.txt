@@ -33,6 +33,19 @@ ON UBUNTU:
         and for the third command, download the list by hand and write it to the file.
         Then type commands as follow to install nvidia-docker:
             sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:12333" update
-            sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:12333" upgrade -y nvidia-container-toolkit
+            sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:12333" upgrade -y nvidia-docker2
+            sudo systemctl restart docker
 
 ON CENTOS8:
+
+ADD USER TO DOCKER GROUP:
+    Eath time you run docker, "sudo" is required, add yourself to group of docker, type:
+        sudo groupadd docker
+        
+
+TEST WETHER SUCCESS：
+    Type:
+        docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
+
+USE DOCKER WITH NVIDIA GPU:
+    
