@@ -41,6 +41,9 @@ ON CENTOS8:
 ADD USER TO DOCKER GROUP:
     Eath time you run docker, "sudo" is required, add yourself to group of docker, type:
         sudo groupadd docker
+        sudo usermod -aG docker $USER
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
         
 
 TEST WETHER SUCCESS：
