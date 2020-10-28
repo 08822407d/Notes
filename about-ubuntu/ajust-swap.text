@@ -1,0 +1,18 @@
+1.For none LVM fs (this part is totally copied from https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-18-04 for private backup purpose, and thanks for the auther):
+    Type command to see the swap details:
+        free -h
+    Type command to switchoff swap to change volume:
+        sudo swapoff -a
+    And as follow to creat or change volume as you need:
+        sudo fallocate -l 32G /swapfile
+        sudo chmod 600 /swapfile
+    Mark the file as swap space by typing:
+        sudo mkswap /swapfile
+    Switch On swap:
+        sudo swapon /swapfile
+    Type to see the changes:
+        free -h
+    Type following command to see if swap been utilize on system start up:
+        cat /etc/fstab
+    If there is a line start with word "swapfile", it is ok, but if there is not, Type:
+        echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
