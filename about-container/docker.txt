@@ -51,4 +51,7 @@ TEST WETHER SUCCESS：
         docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 
 USE DOCKER WITH NVIDIA GPU:
+    docker run -it --gpus all \
+    -u $(id -u):$(id -g) -e HOME=$HOME -e USER=$USER -v $HOME:$HOME \
+    tensorflow/tensorflow:1.11.0-gpu-py3 bash -c "nvcc -V"
     
