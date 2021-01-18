@@ -15,13 +15,13 @@ username is to create a new user, the way below is not a perfect one. To do or n
 	Select "Console (requiring user to login)".
 
 3.Enable root login through SSH
-	sudo vim /ssh/sshd_config (to edit the file);
+	sudo vim /etc/ssh/sshd_config (to edit the file);
 	Add line "PermitRootLogin yes" to the file, you are recommend to add it below a line contain a word
 	"PermitRootLoginwithout" or something similar;
 	Save and exit the file, then reboot system.
 
 4.Login your device as root, and change username:
-	Login as root, then type command "who", you may see only a user "root";
+	Login as root, then type command "who", you may see ONLY ONE user "root";
 	If there are other login users, as I have not face with this problem after doing above steps, it's so sorry that I
 	can't give you some useful tips, please seek others help :(
 	Else, type following commands:
