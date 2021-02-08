@@ -1,0 +1,29 @@
+用bximage生成一个虚拟硬盘myos.img，建议先生成flat的，再根据需要转换成vpc或者vmw4格式。
+
+用gdisk命令对该虚拟盘分区（非lvm型，后续操作比较简单）
+sudo gdisk myos.img
+此时会告诉你盘上没有分区表，会自动生成一个
+然后用n命令制作两个分区，第一个是swap分区，类型码8200，第二个是x86-64的linux root分区
+然后w写入分区结果，自动退出
+
+对各分区进行格式化，采用了网络文章提供的方法：https://blog.51cto.com/nxlhero/780834
+对非lvm的多分区虚拟盘：
+将虚拟盘映射到loop设备上：
+sudo losetup /dev/loop8 myos.img
+用kpartx将全部分区映射出来：
+kpartx -av /dev/loop8
+得到形如/dev/mapper/loop8p1,/dev/mapper/loop8p2的分区
+此时就可以格式化分区了,对本示例的虚拟盘，只需要格式化第二个分区为ext系列的文件系统即可
+sudo mkfs.ext2 /dev/mapper/loop8p2
+格式化后的分区就可以挂载了，用ls -l查看loop8p2链到的设备
+得到：lrwxrwxrwx 1 root root 7 2月   8 10:30 /dev/mapper/loop8p2 -> ../dm-1
+挂载分区：
+sudo mount /dev/dm-1 /mnt
+之后就可以进入该分区操作目录和文件了
+当然也可以直接挂载：
+sudo mount /dev/mapper/loop8p2
+
+卸载虚拟盘，按反向顺序操作：
+sudo umount /mnt
+sudo kpartx -dv /dev/loop8
+sudo losetup -d /dev/loop8

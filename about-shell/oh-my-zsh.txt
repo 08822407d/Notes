@@ -25,15 +25,15 @@ Official site: https://ohmyz.sh/
 	Plugins
 		vim ~/.zshrc
 		plugins=(
-				  git
-				  vi-mode
-				  history
-				  extract
-				  safe-paste
-				  colored-man-pages
-				  command-not-found
-				  zsh-autosuggestions
-				  zsh-syntax-highlighting
+					git
+					vi-mode
+					history
+					extract
+					safe-paste
+					colored-man-pages
+					command-not-found
+					zsh-autosuggestions
+					zsh-syntax-highlighting
 				)
 
 3.Plugin installation
@@ -47,6 +47,6 @@ Official site: https://ohmyz.sh/
 
 4.Others
 	Manually update
-		upgrade_oh_my_zsh
+		omz update
 	Uninstall
 		uninstall_oh_my_zsh
