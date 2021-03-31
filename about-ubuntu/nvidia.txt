@@ -1,0 +1,5 @@
+If you had already install Nvidia driver, and suddenly the "nvidia-smi" command 
+report "could not communicate with GPU", try this:
+	type "ll /usr/src" to find the Nvidia-driver version,
+	then type "sudo dkms install -m nvidia -v xxx.xxx.xxx",
+		the "xxx.xxx.xxx" is the version you get from the former step.
