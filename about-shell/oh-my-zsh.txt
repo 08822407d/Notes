@@ -9,6 +9,8 @@ Official site: https://ohmyz.sh/
 1.1 Manually install
 	1. Clone the repository:
 		git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+	  Or:
+	  	git clone git@github.com:ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 	2. Optionally, backup your existing ~/.zshrc file:
 		cp ~/.zshrc ~/.zshrc.orig
 	3. Create a new zsh configuration file
@@ -38,7 +40,7 @@ Official site: https://ohmyz.sh/
 
 3.Plugin installation
 	AutoSuggestion
-		git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+		git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 		git clone https://gitee.com/g11de/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 	SyntaxHighlight
 		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

@@ -1,0 +1,2 @@
+Add 'code' command to terminal for VSCode:
+    In VSCode, type ⇧⌘P to open command pallete, then type 'shell command' and choose "Install 'code' command in PATH"
