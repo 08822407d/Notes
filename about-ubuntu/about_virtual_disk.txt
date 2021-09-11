@@ -1,0 +1,91 @@
+本文档简述在Ubuntu平台上，如何在VMware虚拟盘上创建GPT分区及FS，如何挂载该盘到平台文件系统上，以及如何将其作为qemu的硬盘源使用
+
+现假定已通过VMware创建了一块虚拟硬盘名为gpt-test, 属于虚拟机grub2-test,
+容量8G(静态容量，即“现在就分配空间”选项)，不分割为多个文件(即“将磁盘存储为单一文件”选项),
+那么默认路径应该是 ～/vmware/grub2-test;
+用 ls -ahl 查看目录可得:
+
+-rw-r--r-- 1 cheyh cheyh 8.0G 9月  11 10:41 gpt-test-flat.vmdk
+-rw-r--r-- 1 cheyh cheyh  455 9月  11 10:41 gpt-test.vmdk
+
+可以看到，文件 gpt-test-flat.vmdk 的大小为8G，这就是之后的步骤要操作的文件。
+
+1.创建GPT分区：(需要安装gdisk工具)
+
+输入命令 sudo gdisk gpt-test-flat.vmdk 进入gdisk界面,会显示
+Partition table scan:
+  MBR: not present
+  BSD: not present
+  APM: not present
+  GPT: not present
+表示这块盘没有分区
+
+gdisk命令提示会等待用户输入命令，输入 w 即可生成MBR保护分区和GPT分区表，并自动保存结果退出gdisk
+
+再次输入命令进入gdisk，可以看到
+Partition table scan:
+  MBR: protective
+  BSD: not present
+  APM: not present
+  GPT: present
+表示该盘已经是GPT盘了
+
+接下来输入 n 以创建新分区，命令提示会分别要求用户指定分区序号，起始扇区，终止扇区，分区类型。
+在分区类型这里，如果要创建UEFI启动分区，就输入 ef00,如果不清楚各分区类型的代码，可以按 l查看。
+创建好之后，输入 p 查看刚刚新建的分区：
+
+Command (? for help): p
+Disk gpt-test-flat.vmdk: 16777216 sectors, 8.0 GiB
+Sector size (logical): 512 bytes
+Disk identifier (GUID): 5D39023A-1535-457A-B41C-A06BE86479F4
+Partition table holds up to 128 entries
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 16777182
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 2014 sectors (1007.0 KiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048        16777182   8.0 GiB     EF00  EFI system partition
+
+然后输入 w 保存创建结果并退出。
+
+2.挂载该虚拟盘文件到回环设备，并创建文件系统(需要安装kpartx)
+分别输入命令
+❯❯❯ sudo losetup /dev/loop11 gpt-test-flat.vmdk
+❯❯❯ sudo kpartx -av /dev/loop11
+add map loop11p1 (253:3): 0 16775135 linear 7:11 2048
+现在该盘已挂载到回环设备上并将分区映射出来，这里loop11要根据自己的情况输入，不要和已有的loop冲突，
+ls /dev | grep loop 查看，在我的机器上loop1到loop10都已占用，所以我映射到loop11上了。
+
+输入命令
+❯❯❯ ls /dev/mapper/
+control  loop11p1
+可以看到loop11p1就是刚刚创建的efi分区
+输入
+❯❯❯ ls -ahl /dev/mapper
+total 0
+drwxr-xr-x  2 root root     140 9月  11 10:56 .
+drwxr-xr-x 21 root root    4.9K 9月  11 10:56 ..
+crw-------  1 root root 10, 236 9月  11  2021 control
+lrwxrwxrwx  1 root root       7 9月  11 11:03 loop11p1 -> ../dm-3
+可以看到loop11p1链接到了设备 /dev/dm-3
+
+下面输入命令，在该分区创建FAT32文件系统
+❯❯❯ sudo mkfs.fat -F 32 /dev/mapper/loop11p1
+mkfs.fat 4.1 (2017-01-24)
+
+现在就可以把这个分区挂在到本机文件系统下了
+❯❯❯ sudo mount /dev/dm-3 /mnt -o uid=$USER,gid=$USER
+❯❯❯ ls -ahl /mnt
+total 4.0K
+drwxr-xr-x  2 user  user  4.0K 1月   1  1970 .
+drwxr-xr-x 19 root  root   276 2月   5  2021 ..
+
+注意，每次平台系统重启后，都需要手动重新挂载虚拟盘分区到回环设备才可以挂在虚拟盘的分区到平台文件系统下，
+命令就是
+❯❯❯ sudo losetup /dev/loop11 gpt-test-flat.vmdk
+❯❯❯ sudo kpartx -av /dev/loop11
+
+3.将该vmdk虚拟盘作为qemu的硬盘源
+很简单，就是直接将该虚拟盘文件作为 -hdb 选项的参数
+❯❯❯ qemu-system-x86_64 -bios ./OVMF.fd -hdb ~/vmware/grub2-test/gpt-test-flat.vmdk -M pc -m 2048 -cpu host -smp threads=1,cores=1,sockets=1 -vga virtio -name UEFI -boot order=dc -net none --enable-kvm -s -S
