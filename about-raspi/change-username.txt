@@ -22,8 +22,8 @@ username is to create a new user, the way below is not a perfect one. To do or n
 
 4.Login your device as root, and change username:
 	Login as root, then type command "who", you may see ONLY ONE user "root";
-	If there are other login users, as I have not face with this problem after doing above steps, it's so sorry that I
-	can't give you some useful tips, please seek others help :(
+	If there are other login users, as I have not faced with this problem after doing above steps, it's so sorry that I
+	can't give you some useful tips for this situation, please seek others help :(
 	Else, type following commands:
 	usermod -l your-user-name pi (modify the default user name);
 	groupmod -n your-user-name pi (modify the group);
@@ -33,4 +33,4 @@ username is to create a new user, the way below is not a perfect one. To do or n
 	user password, you may use the password of the default "Pi" username (and I assume that you have already set the
 	password before you reading this post);
 	After login, when the first time you type a command, your are required to enter your user password, just type once
-	and the whole thing is done.Now you can enjoy the Pi with a username you preferred :)
+	and the whole thing is done. Now you can enjoy the Pi with a username you preferred :)
