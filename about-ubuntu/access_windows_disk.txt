@@ -1,0 +1,9 @@
+1.make sure you have ternoff windows' fast startup.
+
+2.type in command:
+	sudo ntfsfix /dev/nvme1n1p3
+while "nvme1n1p3" is the partition of windows disk
+
+3.if the command reports "Windows is hibernated, refused to mount.", then type:
+	sudo ntfs-3g -o remove_hiberfile /dev/nvme1n1p3 /mnt
+then umount it, and do step 1 again, then reboot.
