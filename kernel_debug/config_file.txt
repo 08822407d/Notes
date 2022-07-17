@@ -1,8 +1,11 @@
-1. debian pem key error
+1. dependencies
+	sudo apt-get install git binutils build-essential flex bison fakeroot ncurses-dev xz-utils libssl-dev bc libelf-dev bison dwarves
+
+2. debian pem key error
 	CONFIG_SYSTEM_TRUSTED_KEYS=""
 	CONFIG_SYSTEM_REVOCATION_KEYS=""
 
-2. fat-fs io charset SO8859_1 not found error
+3. fat-fs io charset SO8859_1 not found error
 	CONFIG_NLS_ISO8859_1=y
 	CONFIG_FAT_DEFAULT_CODEPAGE=437
 	CONFIG_FAT_DEFAULT_IOCHARSET="iso8859-1"
