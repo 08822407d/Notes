@@ -25,6 +25,10 @@
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 100
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 100
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 150
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 150
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 200
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 200
      Then type as follow to choose the version you want:
           sudo update-alternatives --config gcc
           sudo update-alternatives --config g++
