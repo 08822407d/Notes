@@ -1,10 +1,18 @@
-1. debian pem key error
+1. dependencies
+	sudo apt-get install flex bison fakeroot ncurses-dev xz-utils libssl-dev bc libelf-dev bison dwarves zstd
+
+2. debian pem key error
 	CONFIG_SYSTEM_TRUSTED_KEYS=""
 	CONFIG_SYSTEM_REVOCATION_KEYS=""
 
-2. fat-fs io charset SO8859_1 not found error
+3. fat-fs io charset SO8859_1 not found error
 	CONFIG_NLS_ISO8859_1=y
 	CONFIG_FAT_DEFAULT_CODEPAGE=437
 	CONFIG_FAT_DEFAULT_IOCHARSET="iso8859-1"
 	CONFIG_SMB_NLS_REMOTE="cp437"
 	CONFIG_NLS_CODEPAGE_437=m
+
+4. commands
+	make menuconfig $ARCH=x86_64
+	make -j$(nproc) ARCH=x86_64
+	make bzImage
