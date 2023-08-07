@@ -4,10 +4,12 @@ Type:
     vim ~/.ssh/config
     
 Add following lines:
-    # 必须是 github.com
-    Host github.com
-    HostName github.com
+# 必须是 github.com
+Host github.com
+    # HostName github.com
+    HostName 20.200.245.248
     User git
+    port 443
     # 走 HTTP 代理
     ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=8080
     # 走 socks5 代理（如 Shadowsocks）

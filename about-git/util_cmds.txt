@@ -1,0 +1,8 @@
+1.Add remote repo to local repo
+	git remote add <shortname> <remote url>
+
+2.Change associated remote repo
+	git remote set-url <shortname> <remote url>
+
+3.Add remote backup repo has same shortname with existing remote repo
+	git remote set-url -add [--push] <same shortname> <remote url>
