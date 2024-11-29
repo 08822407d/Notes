@@ -12,6 +12,10 @@
 	CONFIG_SMB_NLS_REMOTE="cp437"
 	CONFIG_NLS_CODEPAGE_437=m
 
+	CONFIG_NVME=y
+	CONFIG_NVMEM=y
+	CONFIG_NVME_CORE=y
+
 4. commands
 	make menuconfig $ARCH=x86_64
 	make -j$(nproc) ARCH=x86_64

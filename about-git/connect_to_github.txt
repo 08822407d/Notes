@@ -1,6 +1,6 @@
 1.Creat SSH key
-    ssh-keygen -t rsa -C "your-email-address" (then you are recommended just type ENTER several times by use default path and null password);
-    code ~/.ssh/id_rsa.pub (copy the whole thing in the file);
+    ssh-keygen -t ed25519 -C "your-email-address" (then you are recommended just type ENTER several times by use default path and null password);
+    cat ~/.ssh/id_ed25519.pub (copy the whole thing in the file);
     Then add that to github's ssh keys(you can search on the internet);
     ssh -T git@github.com (then type "yes", and you may see words about "successfully authenticated", that means you have connected to github);
 
