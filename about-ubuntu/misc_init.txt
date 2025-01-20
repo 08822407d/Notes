@@ -1,0 +1,8 @@
+1. New system setup
+
+	Create Root Password:
+		sudo passwd root
+
+	Allow SSH Login as root user:
+		sudo vim /etc/ssh/sshd_config
+	then make sure "PermitRootLogin yes" and "PasswordAuthentication yes" exist and not commented.
